@@ -9,7 +9,7 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "CherryMind — the planner for brains with 47 tabs open" },
       { name: "description", content: "Brain dump the chaos, pick three things, take tiny steps toward big dreams. A soft, playful planner that never shames you." },
-      { property: "og:title", content: "CherryMind — big dreams, busy brain, little steps" },
+      { property: "og:title", content: "CherryMind — for your beautifully busy brain" },
       { property: "og:description", content: "The planner for brains with 47 tabs open. No guilt, no streaks — just tiny wins." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -153,7 +153,7 @@ function Landing() {
 
         <footer className="flex flex-wrap items-center justify-between gap-2 pb-10 text-sm text-muted-foreground">
           <span className="font-display text-lg text-primary">cherrymind.</span>
-          <span>Big dreams · Busy brain · Little steps</span>
+          <span>for your beautifully busy brain.</span>
         </footer>
       </div>
     </main>
