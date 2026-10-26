@@ -63,7 +63,7 @@ function Landing() {
               Your brain isn't broken. <em className="text-primary">Your planner was.</em>
             </h1>
             <p className="mt-6 max-w-lg text-lg text-muted-foreground md:text-xl">
-              Cherry turns the chaos in your head into three tiny wins a day — so you can chase big dreams without burning out.
+              CherryMind turns the chaos in your head into three tiny wins a day — so you can chase big dreams without burning out.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Button asChild size="lg" className="h-14 px-8 text-base shadow-lg">
