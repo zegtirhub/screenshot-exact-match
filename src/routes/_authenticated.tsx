@@ -50,7 +50,7 @@ function Layout() {
     <div className="flex min-h-screen">
       <aside className={`sticky top-0 hidden h-screen shrink-0 flex-col border-r border-sidebar-border bg-sidebar p-3 md:flex ${collapsed ? "w-[68px]" : "w-60"}`}>
         <div className="mb-6 flex items-center justify-between px-2 pt-2">
-          {!collapsed && <span className="font-display text-2xl font-semibold text-primary">cherrymind./span>}
+          {!collapsed && <span className="font-display text-2xl font-semibold text-primary">cherrymind.</span>}
           <button onClick={() => setCollapsed(!collapsed)} aria-label="Toggle sidebar" className="rounded-full p-2 text-muted-foreground hover:bg-sidebar-accent">
             {collapsed ? <PanelLeftOpen className="size-4" /> : <PanelLeftClose className="size-4" />}
           </button>

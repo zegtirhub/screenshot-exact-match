@@ -152,7 +152,7 @@ function Landing() {
         </section>
 
         <footer className="flex flex-wrap items-center justify-between gap-2 pb-10 text-sm text-muted-foreground">
-          <span className="font-display text-lg text-primary">cherrymind./span>
+          <span className="font-display text-lg text-primary">cherrymind.</span>
           <span>Big dreams · Busy brain · Little steps</span>
         </footer>
       </div>
