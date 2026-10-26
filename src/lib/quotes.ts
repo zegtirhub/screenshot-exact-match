@@ -64,7 +64,10 @@ export function pickQuote(ctx: QuoteCtx): { quote: string; note: string } {
 }
 
 function esc(s: string): string {
-  return s.replace(/&/g, "&").replace(/</g, "<").replace(/>/g, ">");
+  const amp = "&" + "amp;";
+  const lt = "&" + "lt;";
+  const gt = "&" + "gt;";
+  return s.replace(/&/g, amp).replace(/</g, lt).replace(/>/g, gt);
 }
 
 function wrap(text: string, maxChars: number): string[] {
