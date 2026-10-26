@@ -9,7 +9,7 @@ import { breakDown } from "@/lib/ai.functions";
 
 export const Route = createFileRoute("/_authenticated/focus")({
   validateSearch: (s: Record<string, unknown>) => ({ task: typeof s["task"] === "string" ? (s["task"] as string) : undefined }),
-  head: () => ({ meta: [{ title: "Focus Room — Cherry planner" }, { name: "description", content: "Just one little thing." }] }),
+  head: () => ({ meta: [{ title: "Focus Room — CherryMind planner" }, { name: "description", content: "Just one little thing." }] }),
   component: Focus,
 });
 

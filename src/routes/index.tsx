@@ -7,9 +7,9 @@ import cherry from "@/assets/cherry-bow.png";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Cherry — the planner for brains with 47 tabs open" },
+      { title: "CherryMind — the planner for brains with 47 tabs open" },
       { name: "description", content: "Brain dump the chaos, pick three things, take tiny steps toward big dreams. A soft, playful planner that never shames you." },
-      { property: "og:title", content: "Cherry — big dreams, busy brain, little steps" },
+      { property: "og:title", content: "CherryMind — big dreams, busy brain, little steps" },
       { property: "og:description", content: "The planner for brains with 47 tabs open. No guilt, no streaks — just tiny wins." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -63,7 +63,7 @@ function Landing() {
               Your brain isn't broken. <em className="text-primary">Your planner was.</em>
             </h1>
             <p className="mt-6 max-w-lg text-lg text-muted-foreground md:text-xl">
-              Cherry turns the chaos in your head into three tiny wins a day — so you can chase big dreams without burning out.
+              CherryMind turns the chaos in your head into three tiny wins a day — so you can chase big dreams without burning out.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Button asChild size="lg" className="h-14 px-8 text-base shadow-lg">
@@ -152,7 +152,7 @@ function Landing() {
         </section>
 
         <footer className="flex flex-wrap items-center justify-between gap-2 pb-10 text-sm text-muted-foreground">
-          <span className="font-display text-lg text-primary">cherry.</span>
+          <span className="font-display text-lg text-primary">cherrymind.</span>
           <span>Big dreams · Busy brain · Little steps</span>
         </footer>
       </div>

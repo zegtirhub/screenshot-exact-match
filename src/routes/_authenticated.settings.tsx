@@ -9,9 +9,10 @@ import { PageHeader } from "@/components/Cherry";
 import { supabase } from "@/integrations/supabase/client";
 import { usePrefs, useSavePrefs } from "@/lib/api";
 import { deleteMyAccount } from "@/lib/ai.functions";
+import { getWidgetToken, resetWidgetToken } from "@/lib/quote.functions";
 
 export const Route = createFileRoute("/_authenticated/settings")({
-  head: () => ({ meta: [{ title: "Settings — Cherry planner" }, { name: "description", content: "Make your planner yours." }] }),
+  head: () => ({ meta: [{ title: "Settings — CherryMind planner" }, { name: "description", content: "Make your planner yours." }] }),
   component: Settings,
 });
 
@@ -19,8 +20,20 @@ function Settings() {
   const { data: prefs } = usePrefs();
   const save = useSavePrefs();
   const delAcc = useServerFn(deleteMyAccount);
+  const getTok = useServerFn(getWidgetToken);
+  const resetTok = useServerFn(resetWidgetToken);
   const nav = useNavigate();
   const [name, setName] = useState(prefs?.display_name ?? "");
+  const [widget, setWidget] = useState<string | null>(null);
+
+  async function showWidget(fresh: boolean) {
+    try {
+      const { token } = await (fresh ? resetTok : getTok)();
+      setWidget(`${window.location.origin}/api/public/quote/${token}`);
+    } catch (e) {
+      toast.error((e as Error).message);
+    }
+  }
 
   async function exportData() {
     const tables = ["preferences", "tasks", "projects", "brain_dumps", "check_ins", "focus_sessions", "rewards"] as const;
@@ -29,7 +42,7 @@ function Settings() {
     const url = URL.createObjectURL(new Blob([JSON.stringify(out, null, 2)], { type: "application/json" }));
     const a = document.createElement("a");
     a.href = url;
-    a.download = "cherry-planner-export.json";
+    a.download = "cherrymind-export.json";
     a.click();
     URL.revokeObjectURL(url);
   }
@@ -65,6 +78,29 @@ function Settings() {
           <span><b>Cherry rewards</b><br /><span className="text-sm text-muted-foreground">Earn cherries and stickers. Turn off anytime.</span></span>
           <Switch checked={prefs?.rewards_enabled ?? true} onCheckedChange={(v) => save.mutate({ rewards_enabled: v })} />
         </label>
+      </section>
+      <section className="paper grid gap-3 p-5">
+        <h2 className="text-xl text-burgundy">Daily quote widget</h2>
+        <p className="text-sm text-muted-foreground">
+          A private link to a little card with today's quote. It refreshes on its own each day and picks up your
+          energy check-in and your little wins. Paste it into Notion, Obsidian or any tool that shows an image —
+          or bookmark it.
+        </p>
+        <div className="flex flex-wrap gap-2">
+          <Button variant="outline" onClick={() => showWidget(false)}>{widget ? "Show my link" : "Create my widget link"}</Button>
+          {widget && (
+            <>
+              <Button variant="outline" onClick={() => { navigator.clipboard.writeText(widget); toast("Link copied ♡"); }}>Copy link</Button>
+              <Button variant="outline" onClick={() => showWidget(true)}>Make a new link</Button>
+            </>
+          )}
+        </div>
+        {widget && (
+          <div className="grid gap-2">
+            <Input readOnly value={widget} onFocus={(e) => e.currentTarget.select()} />
+            <img src={widget} alt="Today's quote card preview" className="w-full max-w-sm rounded-2xl border border-border" />
+          </div>
+        )}
       </section>
       <section className="paper grid gap-3 p-5">
         <h2 className="text-xl text-burgundy">Your data</h2>

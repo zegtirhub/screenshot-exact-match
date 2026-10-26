@@ -10,7 +10,7 @@ import { STICKERS } from "@/lib/stickers";
 import { DAILY_CHERRY_CAP } from "@/lib/dates";
 
 export const Route = createFileRoute("/_authenticated/garden")({
-  head: () => ({ meta: [{ title: "My Little Garden — Cherry planner" }, { name: "description", content: "Gentle rewards for showing up." }] }),
+  head: () => ({ meta: [{ title: "My Little Garden — CherryMind planner" }, { name: "description", content: "Gentle rewards for showing up." }] }),
   component: Garden,
 });
 

@@ -12,9 +12,9 @@ import cherry from "@/assets/cherry-bow.png";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "Sign in — Cherry planner" },
-      { name: "description", content: "Sign in or create your Cherry planner account." },
-      { property: "og:title", content: "Sign in — Cherry planner" },
+      { title: "Sign in — CherryMind planner" },
+      { name: "description", content: "Sign in or create your CherryMind planner account." },
+      { property: "og:title", content: "Sign in — CherryMind planner" },
       { property: "og:description", content: "Your little corner of the world is waiting." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
