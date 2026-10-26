@@ -42,7 +42,7 @@ function Settings() {
     const url = URL.createObjectURL(new Blob([JSON.stringify(out, null, 2)], { type: "application/json" }));
     const a = document.createElement("a");
     a.href = url;
-    a.download = "cherry-planner-export.json";
+    a.download = "cherrymind-export.json";
     a.click();
     URL.revokeObjectURL(url);
   }
