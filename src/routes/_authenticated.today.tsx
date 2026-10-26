@@ -11,7 +11,7 @@ import { addDays, prettyDate, todayStr } from "@/lib/dates";
 import { STICKERS } from "@/lib/stickers";
 
 export const Route = createFileRoute("/_authenticated/today")({
-  head: () => ({ meta: [{ title: "Today — Cherry planner" }, { name: "description", content: "Your gentle daily plan." }] }),
+  head: () => ({ meta: [{ title: "Today — CherryMind planner" }, { name: "description", content: "Your gentle daily plan." }] }),
   component: Today,
 });
 

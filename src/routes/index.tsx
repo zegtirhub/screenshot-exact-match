@@ -7,9 +7,9 @@ import cherry from "@/assets/cherry-bow.png";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Cherry — the planner for brains with 47 tabs open" },
+      { title: "CherryMind — the planner for brains with 47 tabs open" },
       { name: "description", content: "Brain dump the chaos, pick three things, take tiny steps toward big dreams. A soft, playful planner that never shames you." },
-      { property: "og:title", content: "Cherry — big dreams, busy brain, little steps" },
+      { property: "og:title", content: "CherryMind — big dreams, busy brain, little steps" },
       { property: "og:description", content: "The planner for brains with 47 tabs open. No guilt, no streaks — just tiny wins." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

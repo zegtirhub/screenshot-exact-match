@@ -11,7 +11,7 @@ import { usePrefs, useSavePrefs } from "@/lib/api";
 import { deleteMyAccount } from "@/lib/ai.functions";
 
 export const Route = createFileRoute("/_authenticated/settings")({
-  head: () => ({ meta: [{ title: "Settings — Cherry planner" }, { name: "description", content: "Make your planner yours." }] }),
+  head: () => ({ meta: [{ title: "Settings — CherryMind planner" }, { name: "description", content: "Make your planner yours." }] }),
   component: Settings,
 });
 

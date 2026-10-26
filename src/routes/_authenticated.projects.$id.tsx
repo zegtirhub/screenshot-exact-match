@@ -13,7 +13,7 @@ import { prettyDate } from "@/lib/dates";
 import { breakDown } from "@/lib/ai.functions";
 
 export const Route = createFileRoute("/_authenticated/projects/$id")({
-  head: () => ({ meta: [{ title: "Project — Cherry planner" }, { name: "description", content: "One project, many little steps." }] }),
+  head: () => ({ meta: [{ title: "Project — CherryMind planner" }, { name: "description", content: "One project, many little steps." }] }),
   component: ProjectPage,
 });
 

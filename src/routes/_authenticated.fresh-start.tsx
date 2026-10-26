@@ -9,7 +9,7 @@ import { addDays, prettyDate, todayStr } from "@/lib/dates";
 import { breakDown } from "@/lib/ai.functions";
 
 export const Route = createFileRoute("/_authenticated/fresh-start")({
-  head: () => ({ meta: [{ title: "Fresh Start — Cherry planner" }, { name: "description", content: "Yesterday is over. We can start again." }] }),
+  head: () => ({ meta: [{ title: "Fresh Start — CherryMind planner" }, { name: "description", content: "Yesterday is over. We can start again." }] }),
   component: FreshStart,
 });
 

@@ -7,7 +7,7 @@ import { useSavePrefs } from "@/lib/api";
 import cherry from "@/assets/cherry-bow.png";
 
 export const Route = createFileRoute("/_authenticated/onboarding")({
-  head: () => ({ meta: [{ title: "Welcome — Cherry planner" }, { name: "description", content: "Set up your little planner." }] }),
+  head: () => ({ meta: [{ title: "Welcome — CherryMind planner" }, { name: "description", content: "Set up your little planner." }] }),
   component: Onboarding,
 });
 

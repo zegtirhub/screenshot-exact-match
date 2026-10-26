@@ -11,7 +11,7 @@ import { AREAS, areaDot, useProjects, useSaveProject, useTasks } from "@/lib/api
 import { prettyDate } from "@/lib/dates";
 
 export const Route = createFileRoute("/_authenticated/projects/")({
-  head: () => ({ meta: [{ title: "Projects — Cherry planner" }, { name: "description", content: "Big dreams, little steps." }] }),
+  head: () => ({ meta: [{ title: "Projects — CherryMind planner" }, { name: "description", content: "Big dreams, little steps." }] }),
   component: Projects,
 });
 

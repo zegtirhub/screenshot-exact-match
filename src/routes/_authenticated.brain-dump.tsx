@@ -12,7 +12,7 @@ import { todayStr } from "@/lib/dates";
 import { organizeBrainDump, type BrainPlan } from "@/lib/ai.functions";
 
 export const Route = createFileRoute("/_authenticated/brain-dump")({
-  head: () => ({ meta: [{ title: "Brain Dump — Cherry planner" }, { name: "description", content: "Drop it all here. We'll figure it out together." }] }),
+  head: () => ({ meta: [{ title: "Brain Dump — CherryMind planner" }, { name: "description", content: "Drop it all here. We'll figure it out together." }] }),
   component: BrainDump,
 });
 

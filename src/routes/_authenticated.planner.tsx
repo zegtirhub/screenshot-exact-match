@@ -8,7 +8,7 @@ import { areaDot, useTasks, useUpdateTask, type Task } from "@/lib/api";
 import { addDays, parseDay, prettyDate, startOfWeek, toDay, todayStr } from "@/lib/dates";
 
 export const Route = createFileRoute("/_authenticated/planner")({
-  head: () => ({ meta: [{ title: "My Planner — Cherry planner" }, { name: "description", content: "Your week, softly laid out." }] }),
+  head: () => ({ meta: [{ title: "My Planner — CherryMind planner" }, { name: "description", content: "Your week, softly laid out." }] }),
   component: Planner,
 });
 
