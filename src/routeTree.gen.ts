@@ -13,8 +13,15 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedBrainDumpRouteImport } from './routes/_authenticated.brain-dump'
+import { Route as AuthenticatedFocusRouteImport } from './routes/_authenticated.focus'
+import { Route as AuthenticatedFreshStartRouteImport } from './routes/_authenticated.fresh-start'
+import { Route as AuthenticatedGardenRouteImport } from './routes/_authenticated.garden'
 import { Route as AuthenticatedOnboardingRouteImport } from './routes/_authenticated.onboarding'
+import { Route as AuthenticatedPlannerRouteImport } from './routes/_authenticated.planner'
+import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticated.settings'
 import { Route as AuthenticatedTodayRouteImport } from './routes/_authenticated.today'
+import { Route as AuthenticatedProjectsIndexRouteImport } from './routes/_authenticated.projects.index'
+import { Route as AuthenticatedProjectsIdRouteImport } from './routes/_authenticated.projects.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -35,9 +42,34 @@ const AuthenticatedBrainDumpRoute = AuthenticatedBrainDumpRouteImport.update({
   path: '/brain-dump',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const AuthenticatedFocusRoute = AuthenticatedFocusRouteImport.update({
+  id: '/focus',
+  path: '/focus',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedFreshStartRoute = AuthenticatedFreshStartRouteImport.update({
+  id: '/fresh-start',
+  path: '/fresh-start',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedGardenRoute = AuthenticatedGardenRouteImport.update({
+  id: '/garden',
+  path: '/garden',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
 const AuthenticatedOnboardingRoute = AuthenticatedOnboardingRouteImport.update({
   id: '/onboarding',
   path: '/onboarding',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedPlannerRoute = AuthenticatedPlannerRouteImport.update({
+  id: '/planner',
+  path: '/planner',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedSettingsRoute = AuthenticatedSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
 const AuthenticatedTodayRoute = AuthenticatedTodayRouteImport.update({
@@ -45,20 +77,45 @@ const AuthenticatedTodayRoute = AuthenticatedTodayRouteImport.update({
   path: '/today',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const AuthenticatedProjectsIndexRoute =
+  AuthenticatedProjectsIndexRouteImport.update({
+    id: '/projects/',
+    path: '/projects/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedProjectsIdRoute = AuthenticatedProjectsIdRouteImport.update({
+  id: '/projects/$id',
+  path: '/projects/$id',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/brain-dump': typeof AuthenticatedBrainDumpRoute
+  '/focus': typeof AuthenticatedFocusRoute
+  '/fresh-start': typeof AuthenticatedFreshStartRoute
+  '/garden': typeof AuthenticatedGardenRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
+  '/planner': typeof AuthenticatedPlannerRoute
+  '/settings': typeof AuthenticatedSettingsRoute
   '/today': typeof AuthenticatedTodayRoute
+  '/projects/$id': typeof AuthenticatedProjectsIdRoute
+  '/projects/': typeof AuthenticatedProjectsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/brain-dump': typeof AuthenticatedBrainDumpRoute
+  '/focus': typeof AuthenticatedFocusRoute
+  '/fresh-start': typeof AuthenticatedFreshStartRoute
+  '/garden': typeof AuthenticatedGardenRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
+  '/planner': typeof AuthenticatedPlannerRoute
+  '/settings': typeof AuthenticatedSettingsRoute
   '/today': typeof AuthenticatedTodayRoute
+  '/projects/$id': typeof AuthenticatedProjectsIdRoute
+  '/projects': typeof AuthenticatedProjectsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -66,22 +123,60 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteWithChildren
   '/auth': typeof AuthRoute
   '/_authenticated/brain-dump': typeof AuthenticatedBrainDumpRoute
+  '/_authenticated/focus': typeof AuthenticatedFocusRoute
+  '/_authenticated/fresh-start': typeof AuthenticatedFreshStartRoute
+  '/_authenticated/garden': typeof AuthenticatedGardenRoute
   '/_authenticated/onboarding': typeof AuthenticatedOnboardingRoute
+  '/_authenticated/planner': typeof AuthenticatedPlannerRoute
+  '/_authenticated/settings': typeof AuthenticatedSettingsRoute
   '/_authenticated/today': typeof AuthenticatedTodayRoute
+  '/_authenticated/projects/$id': typeof AuthenticatedProjectsIdRoute
+  '/_authenticated/projects/': typeof AuthenticatedProjectsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/brain-dump' | '/onboarding' | '/today'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/brain-dump'
+    | '/focus'
+    | '/fresh-start'
+    | '/garden'
+    | '/onboarding'
+    | '/planner'
+    | '/settings'
+    | '/today'
+    | '/projects/$id'
+    | '/projects/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/brain-dump' | '/onboarding' | '/today'
+  to:
+    | '/'
+    | '/auth'
+    | '/brain-dump'
+    | '/focus'
+    | '/fresh-start'
+    | '/garden'
+    | '/onboarding'
+    | '/planner'
+    | '/settings'
+    | '/today'
+    | '/projects/$id'
+    | '/projects'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/auth'
     | '/_authenticated/brain-dump'
+    | '/_authenticated/focus'
+    | '/_authenticated/fresh-start'
+    | '/_authenticated/garden'
     | '/_authenticated/onboarding'
+    | '/_authenticated/planner'
+    | '/_authenticated/settings'
     | '/_authenticated/today'
+    | '/_authenticated/projects/$id'
+    | '/_authenticated/projects/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -120,11 +215,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedBrainDumpRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/focus': {
+      id: '/_authenticated/focus'
+      path: '/focus'
+      fullPath: '/focus'
+      preLoaderRoute: typeof AuthenticatedFocusRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/fresh-start': {
+      id: '/_authenticated/fresh-start'
+      path: '/fresh-start'
+      fullPath: '/fresh-start'
+      preLoaderRoute: typeof AuthenticatedFreshStartRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/garden': {
+      id: '/_authenticated/garden'
+      path: '/garden'
+      fullPath: '/garden'
+      preLoaderRoute: typeof AuthenticatedGardenRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/onboarding': {
       id: '/_authenticated/onboarding'
       path: '/onboarding'
       fullPath: '/onboarding'
       preLoaderRoute: typeof AuthenticatedOnboardingRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/planner': {
+      id: '/_authenticated/planner'
+      path: '/planner'
+      fullPath: '/planner'
+      preLoaderRoute: typeof AuthenticatedPlannerRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/settings': {
+      id: '/_authenticated/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof AuthenticatedSettingsRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
     '/_authenticated/today': {
@@ -134,19 +264,47 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedTodayRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/projects/': {
+      id: '/_authenticated/projects/'
+      path: '/projects'
+      fullPath: '/projects/'
+      preLoaderRoute: typeof AuthenticatedProjectsIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/projects/$id': {
+      id: '/_authenticated/projects/$id'
+      path: '/projects/$id'
+      fullPath: '/projects/$id'
+      preLoaderRoute: typeof AuthenticatedProjectsIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
   }
 }
 
 interface AuthenticatedRouteChildren {
   AuthenticatedBrainDumpRoute: typeof AuthenticatedBrainDumpRoute
+  AuthenticatedFocusRoute: typeof AuthenticatedFocusRoute
+  AuthenticatedFreshStartRoute: typeof AuthenticatedFreshStartRoute
+  AuthenticatedGardenRoute: typeof AuthenticatedGardenRoute
   AuthenticatedOnboardingRoute: typeof AuthenticatedOnboardingRoute
+  AuthenticatedPlannerRoute: typeof AuthenticatedPlannerRoute
+  AuthenticatedSettingsRoute: typeof AuthenticatedSettingsRoute
   AuthenticatedTodayRoute: typeof AuthenticatedTodayRoute
+  AuthenticatedProjectsIdRoute: typeof AuthenticatedProjectsIdRoute
+  AuthenticatedProjectsIndexRoute: typeof AuthenticatedProjectsIndexRoute
 }
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
   AuthenticatedBrainDumpRoute: AuthenticatedBrainDumpRoute,
+  AuthenticatedFocusRoute: AuthenticatedFocusRoute,
+  AuthenticatedFreshStartRoute: AuthenticatedFreshStartRoute,
+  AuthenticatedGardenRoute: AuthenticatedGardenRoute,
   AuthenticatedOnboardingRoute: AuthenticatedOnboardingRoute,
+  AuthenticatedPlannerRoute: AuthenticatedPlannerRoute,
+  AuthenticatedSettingsRoute: AuthenticatedSettingsRoute,
   AuthenticatedTodayRoute: AuthenticatedTodayRoute,
+  AuthenticatedProjectsIdRoute: AuthenticatedProjectsIdRoute,
+  AuthenticatedProjectsIndexRoute: AuthenticatedProjectsIndexRoute,
 }
 
 const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
