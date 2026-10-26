@@ -23,9 +23,9 @@ export const areaDot: Record<string, string> = {
   creative: "bg-area-creative",
 };
 
-function check<T>(res: { data: T; error: { message: string } | null }): T {
+function check<T>(res: { data: T; error: { message: string } | null }): NonNullable<T> {
   if (res.error) throw new Error(res.error.message);
-  return res.data;
+  return res.data as NonNullable<T>;
 }
 
 /* ---------- preferences ---------- */

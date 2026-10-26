@@ -18,7 +18,7 @@ export function TaskItem({
   compact,
 }: {
   task: Task;
-  subtasks?: Task[];
+  subtasks?: Task[] | undefined;
   extraActions?: React.ReactNode;
   draggable?: boolean;
   compact?: boolean;

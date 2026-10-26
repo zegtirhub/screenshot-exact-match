@@ -31,7 +31,7 @@ function BrainDump() {
   const nav = useNavigate();
 
   async function run(easier = false) {
-    if (!text.trim()) return toast("Write anything at all — messy is perfect.");
+    if (!text.trim()) { toast("Write anything at all — messy is perfect."); return; }
     setBusy(true);
     setAiFailed(false);
     if (!easier) await supabase.from("brain_dumps").insert({ content: text });
@@ -57,7 +57,7 @@ function BrainDump() {
 
   async function save() {
     const keep = (items ?? []).filter((i) => i.keep && i.title.trim());
-    if (!keep.length) return toast("Nothing selected yet.");
+    if (!keep.length) { toast("Nothing selected yet."); return; }
     try {
       for (const it of keep) {
         if (it.is_project) {

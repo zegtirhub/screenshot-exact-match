@@ -30,7 +30,7 @@ export function TaskDialog({
   const set = (k: keyof Task, v: unknown) => setF((p) => ({ ...p, [k]: v }));
 
   async function save() {
-    if (!f.title?.trim()) return toast("Give it a little name first ♡");
+    if (!f.title?.trim()) { toast("Give it a little name first ♡"); return; }
     const row = {
       title: f.title.trim(),
       notes: f.notes || null,

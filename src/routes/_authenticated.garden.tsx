@@ -25,7 +25,7 @@ function Garden() {
   async function unlock(key: string, cost: number) {
     if (cherries < cost) return;
     const { error } = await supabase.from("rewards").insert({ item_key: key });
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     await save.mutateAsync({ cherries: cherries - cost });
     qc.invalidateQueries({ queryKey: ["rewards"] });
     toast("A new sticker for your planner ✨");

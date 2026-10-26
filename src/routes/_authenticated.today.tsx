@@ -71,7 +71,7 @@ function Today() {
 
   function lightenDay() {
     const extra = rest.filter((t) => t.due_date === today);
-    if (!extra.length) return toast("Your day is already light ♡");
+    if (!extra.length) { toast("Your day is already light ♡"); return; }
     if (!confirm(`Move ${extra.length} non-pick task(s) to tomorrow?`)) return;
     extra.forEach((t) => update.mutate({ id: t.id, due_date: addDays(today, 1) }));
     toast("Moved to tomorrow. Rest is allowed.");
