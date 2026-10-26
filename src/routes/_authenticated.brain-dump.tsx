@@ -65,7 +65,7 @@ function BrainDump() {
           await addTasks.mutateAsync(it.steps.map((s, k) => ({ title: s, area: it.area, project_id: p.id, position: k })));
         } else {
           const [t] = await addTasks.mutateAsync([{ title: it.title, area: it.area, estimate_min: it.estimate_min, due_date: it.urgent ? todayStr() : null }]);
-          if (it.steps.length) await addTasks.mutateAsync(it.steps.map((s, k) => ({ title: s, area: it.area, parent_id: t.id, position: k })));
+          if (t && it.steps.length) await addTasks.mutateAsync(it.steps.map((s, k) => ({ title: s, area: it.area, parent_id: t.id, position: k })));
         }
       }
       toast("Out of your head and into your planner ♡");
