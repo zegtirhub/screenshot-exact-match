@@ -70,7 +70,7 @@ function Layout() {
           ))}
         </nav>
         {!collapsed && (
-          <p className="mt-auto px-3 pb-2 font-display text-sm italic text-muted-foreground">for your beautifully busy brain.</p>
+          <p className="mt-auto px-3 pb-2 font-display text-xs italic leading-snug text-balance text-muted-foreground">for your beautifully busy brain.</p>
         )}
       </aside>
 
