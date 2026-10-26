@@ -14,7 +14,242 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      brain_dumps: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          user_id?: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      check_ins: {
+        Row: {
+          day: string
+          energy: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          day: string
+          energy: string
+          id?: string
+          user_id?: string
+        }
+        Update: {
+          day?: string
+          energy?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      focus_sessions: {
+        Row: {
+          created_at: string
+          id: string
+          minutes: number
+          task_id: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          minutes?: number
+          task_id?: string | null
+          user_id?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          minutes?: number
+          task_id?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "focus_sessions_task_id_fkey"
+            columns: ["task_id"]
+            isOneToOne: false
+            referencedRelation: "tasks"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      preferences: {
+        Row: {
+          cherries: number
+          created_at: string
+          display_name: string | null
+          mode: string
+          onboarded: boolean
+          organizing: string[]
+          rewards_enabled: boolean
+          struggles: string[]
+          user_id: string
+        }
+        Insert: {
+          cherries?: number
+          created_at?: string
+          display_name?: string | null
+          mode?: string
+          onboarded?: boolean
+          organizing?: string[]
+          rewards_enabled?: boolean
+          struggles?: string[]
+          user_id: string
+        }
+        Update: {
+          cherries?: number
+          created_at?: string
+          display_name?: string | null
+          mode?: string
+          onboarded?: boolean
+          organizing?: string[]
+          rewards_enabled?: boolean
+          struggles?: string[]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      projects: {
+        Row: {
+          category: string
+          created_at: string
+          deadline: string | null
+          description: string | null
+          id: string
+          name: string
+          notes: string | null
+          user_id: string
+        }
+        Insert: {
+          category?: string
+          created_at?: string
+          deadline?: string | null
+          description?: string | null
+          id?: string
+          name: string
+          notes?: string | null
+          user_id?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          deadline?: string | null
+          description?: string | null
+          id?: string
+          name?: string
+          notes?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      rewards: {
+        Row: {
+          created_at: string
+          id: string
+          item_key: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          item_key: string
+          user_id?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          item_key?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      tasks: {
+        Row: {
+          area: string
+          completed_at: string | null
+          created_at: string
+          due_date: string | null
+          due_time: string | null
+          estimate_min: number | null
+          id: string
+          is_pick: boolean
+          notes: string | null
+          parent_id: string | null
+          position: number
+          project_id: string | null
+          recurrence: string
+          status: string
+          title: string
+          user_id: string
+        }
+        Insert: {
+          area?: string
+          completed_at?: string | null
+          created_at?: string
+          due_date?: string | null
+          due_time?: string | null
+          estimate_min?: number | null
+          id?: string
+          is_pick?: boolean
+          notes?: string | null
+          parent_id?: string | null
+          position?: number
+          project_id?: string | null
+          recurrence?: string
+          status?: string
+          title: string
+          user_id?: string
+        }
+        Update: {
+          area?: string
+          completed_at?: string | null
+          created_at?: string
+          due_date?: string | null
+          due_time?: string | null
+          estimate_min?: number | null
+          id?: string
+          is_pick?: boolean
+          notes?: string | null
+          parent_id?: string | null
+          position?: number
+          project_id?: string | null
+          recurrence?: string
+          status?: string
+          title?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tasks_parent_id_fkey"
+            columns: ["parent_id"]
+            isOneToOne: false
+            referencedRelation: "tasks"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "tasks_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
