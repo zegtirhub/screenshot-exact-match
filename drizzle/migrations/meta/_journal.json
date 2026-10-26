@@ -8,6 +8,13 @@
       "when": 1793004945417,
       "tag": "0000_cherry_core",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793029142754,
+      "tag": "0001_add_widget_token",
+      "breakpoints": true
     }
   ]
 }

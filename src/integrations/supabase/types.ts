@@ -99,6 +99,7 @@ export type Database = {
           rewards_enabled: boolean
           struggles: string[]
           user_id: string
+          widget_token: string | null
         }
         Insert: {
           cherries?: number
@@ -110,6 +111,7 @@ export type Database = {
           rewards_enabled?: boolean
           struggles?: string[]
           user_id: string
+          widget_token?: string | null
         }
         Update: {
           cherries?: number
@@ -121,6 +123,7 @@ export type Database = {
           rewards_enabled?: boolean
           struggles?: string[]
           user_id?: string
+          widget_token?: string | null
         }
         Relationships: []
       }
