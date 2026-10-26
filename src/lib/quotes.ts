@@ -52,10 +52,10 @@ export function pickQuote(ctx: QuoteCtx): { quote: string; note: string } {
   let pool = MOMENTUM;
   if (ctx.energy === "low") pool = CALM;
   else if (ctx.energy === "high") pool = BOLD;
-  const quote = pool[seed % pool.length];
+  const quote = pool[seed % pool.length] ?? "Small steps count, too.";
   const alt = hash(ctx.day) % 100;
   let note = "— cherrymind, your daily page";
-  if (ctx.overdue && ctx.overdue > 0 && alt < 25) note = OVERDUE[alt % OVERDUE.length];
+  if (ctx.overdue && ctx.overdue > 0 && alt < 25) note = OVERDUE[alt % OVERDUE.length] ?? note;
   else if ((ctx.wins ?? 0) > 0 && alt < 50) {
     const w = ctx.wins ?? 0;
     note = w === 1 ? "You've done one little thing today already. That counts." : `You've done ${w} little things today already. That counts.`;
@@ -87,8 +87,11 @@ function wrap(text: string, maxChars: number): string[] {
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 function pretty(day: string): string {
-  const [y, m, d] = day.split("-").map(Number);
-  return `${MONTHS[(m ?? 1) - 1]} ${d}, ${y}`;
+  const parts = day.split("-").map(Number);
+  const m = parts[1] ?? 1;
+  const d = parts[2] ?? 1;
+  const y = parts[0] ?? new Date().getFullYear();
+  return `${MONTHS[m - 1] ?? "January"} ${d}, ${y}`;
 }
 
 /** Deterministic SVG card for the daily-quote widget link. */
@@ -96,7 +99,7 @@ export function buildQuoteCard(ctx: QuoteCtx): string {
   const { quote, note } = pickQuote(ctx);
   const lines = wrap(quote, 34);
   const y0 = 168 - (lines.length - 1) * 16;
-  const who = ctx.name ? `for ${esc(ctx.name.split(" ")[0])}` : "for you";
+  const who = ctx.name ? `for ${esc(ctx.name.trim().split(" ")[0] ?? "you")}` : "for you";
   const body = lines.map((l, i) => `<text x="300" y="${y0 + i * 34}" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-style="italic" fill="#4D2633">${esc(l)}</text>`).join("\n  ");
   return `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="360" viewBox="0 0 600 360">
   <defs>
