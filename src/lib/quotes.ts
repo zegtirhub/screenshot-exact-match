@@ -54,7 +54,7 @@ export function pickQuote(ctx: QuoteCtx): { quote: string; note: string } {
   else if (ctx.energy === "high") pool = BOLD;
   const quote = pool[seed % pool.length] ?? "Small steps count, too.";
   const alt = hash(ctx.day) % 100;
-  let note = "— cherrymind, your daily page";
+  let note = "— cherrymind, for your beautifully busy brain";
   if (ctx.overdue && ctx.overdue > 0 && alt < 25) note = OVERDUE[alt % OVERDUE.length] ?? note;
   else if ((ctx.wins ?? 0) > 0 && alt < 50) {
     const w = ctx.wins ?? 0;
